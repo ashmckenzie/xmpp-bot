@@ -2,13 +2,13 @@ require 'cgi'
 require 'nokogiri'
 
 module Bot
-  class WeatherBotCommand
+  class WeatherBot
     def setup
       {
         :syntax => 'weather',
         :description => 'Returns the weather',
         :is_public => true,
-        :regex => /(?:weather) (?:is like in|like in|in|for| ?)(.+)$/
+        :regex => /(?:weather) (?:is like in|like in|in|for| ?)(.+)$/i
       }
     end
 
