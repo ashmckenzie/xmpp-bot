@@ -2,9 +2,12 @@
 
 require 'rubygems'
 require 'trollop'
+
+require './lib/string.rb'
 require './lib/bot.rb'
-require './lib/commands/time_bot.rb'
-require './lib/commands/weather_bot.rb'
+require './lib/commands/time.rb'
+require './lib/commands/weather.rb'
+require './lib/commands/temperature.rb'
 
 opts = Trollop::options do
   opt :help, 'Help', :short => 'h'
@@ -14,6 +17,9 @@ opts = Trollop::options do
 end
 
 b = Bot::Bot.new(opts)
-b.register(Bot::TimeBot.new)
-b.register(Bot::WeatherBot.new)
+b.register([
+  Bot::Time.new, 
+  Bot::Weather.new,
+  Bot::Temperature.new
+])
 b.connect
