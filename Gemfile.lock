@@ -4,6 +4,8 @@ GEM
     jabber-bot (1.3.0)
       xmpp4r-simple (>= 0.8.7)
     nokogiri (1.4.6)
+    trollop (1.16.2)
+    tzinfo (0.3.29)
     xmpp4r (0.5)
     xmpp4r-simple (0.8.8)
       xmpp4r (>= 0.3.2)
@@ -14,5 +16,6 @@ PLATFORMS
 DEPENDENCIES
   jabber-bot
   nokogiri
-  xmpp4r
+  trollop
+  tzinfo
   xmpp4r-simple

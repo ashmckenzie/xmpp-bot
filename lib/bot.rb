@@ -12,10 +12,16 @@ end
 
 module Bot
   class Bot
-    def initialize
+    DEFAULT_CONFIG = 'bot.yaml'
+    DEFAULT_QUIET = true
+    DEFAULT_DEBUG = false
+    
+    def initialize opts
       @bot = nil
+      @opts = opts
       @logger = Logger.new(STDOUT)
-      @config = YAML.load_file('bot.yaml')['config']
+      @logger.info 'Firing up...'
+      @config = YAML.load_file(opts[:config])['config']
       setup
     end
 
@@ -34,7 +40,7 @@ module Bot
       )
     end
 
-    def register_command command
+    def register command
       @bot.add_command(command.setup) do |*args|
         @logger.info "#{args[0]}: #{args[1..-1].join(', ')}"
         begin
